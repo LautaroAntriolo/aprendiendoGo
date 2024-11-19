@@ -15,6 +15,7 @@ Requisitos:
 
 Objetivo:
 Aprender a trabajar con servidores HTTP, JSON y CRUD básico.
+
 3. Sistema de Gestión de Productos con Base de Datos
 
 Descripción:
