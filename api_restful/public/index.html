@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .superior{
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .inferior{
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task.completed {
+            text-decoration: line-through;
+        }
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="superior">
+        <h1>Gestión de Tareas</h1>
+        <p>{{.TiempoANavidad}}</p> 
+    </div>
+    <div class="inferior">
+        <div class="form">
+            <input type="text" id="taskTitle" placeholder="Título de la tarea" />
+            <input type="text" id="taskDescription" placeholder="Descripción de la tarea" />
+            <button onclick="createTask()">Añadir</button>
+        </div>
+        <div class="showtasks">
+            <h2>Lista de Tareas</h2>
+            <div id="taskList"></div>
+        </div>  
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:1323";
+        let tasks = []; // Para cambiar el orden
+
+        async function fetchTasks() {
+            const response = await fetch(`${API_URL}/tasks`);
+            tasks = await response.json(); 
+            renderTasks();
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const taskDiv = document.createElement('div');
+                taskDiv.className = `task ${task.done ? 'completed' : ''}`;
+                taskDiv.innerHTML = `
+                    <div>
+                        <strong>${task.title}</strong>
+                        <p>${task.description || 'Sin descripción'}</p>
+                    </div>
+                    <div>
+                        <button onclick="moveTask(${index}, -1)" ${index === 0 ? 'disabled' : ''}>⬆️</button>
+                        <button onclick="moveTask(${index}, 1)" ${index === tasks.length - 1 ? 'disabled' : ''}>⬇️</button>
+                        <button onclick="markAsDone(${task.id})" ${task.done ? "disabled" : ""}>
+                            ${task.done ? "Completada" : "Completar"}
+                        </button>
+                        <button onclick="deleteTask(${task.id})">Eliminar</button>
+                    </div>
+                `;
+                taskList.appendChild(taskDiv);
+            });
+        }
+
+
+        async function createTask() {
+            const taskTitle = document.getElementById('taskTitle').value;
+            const taskDescription = document.getElementById('taskDescription').value;
+
+            if (taskTitle.trim() === '') return alert('Por favor, escribe un título para la tarea.');
+
+            const response = await fetch(`${API_URL}/tasks`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: taskTitle,
+                    description: taskDescription, // Incluir descripción
+                }),
+            });
+
+            if (response.ok) {
+                const newTask = await response.json();
+                tasks.push(newTask); // Añadir localmente
+                renderTasks();
+            }
+
+            document.getElementById('taskTitle').value = '';
+            document.getElementById('taskDescription').value = '';
+        }
+
+        async function markAsDone(id) {
+            const response = await fetch(`${API_URL}/tasks/${id}`, { method: 'PUT' });
+            if (response.ok) {
+                const updatedTask = await response.json();
+                const taskIndex = tasks.findIndex(task => task.id === id);
+                if (taskIndex !== -1) {
+                    tasks[taskIndex] = updatedTask; // Actualizamos localmente
+                    renderTasks();
+                }
+            } else {
+                console.error("Error al actualizar la tarea:", await response.text());
+            }
+        }
+
+        async function deleteTask(id) {
+            const response = await fetch(`${API_URL}/tasks/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                tasks = tasks.filter(task => task.id !== id); // Eliminamos localmente
+                renderTasks();
+            }
+        }
+
+        function moveTask(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= tasks.length) return; // Evitar movimientos fuera de rango
+            [tasks[index], tasks[newIndex]] = [tasks[newIndex], tasks[index]]; // Intercambiamos posiciones
+            renderTasks();
+        }
+
+        fetchTasks();
+    </script>
+</body>
+</html>
