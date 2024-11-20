@@ -38,6 +38,18 @@ func Volumenes(figura string, radio float64){
 }
 
 /*2. Calcular el número mas grande de 5 números dados*/
+func NumeroMaGrande(peticiones int){
+	var numeroMasGrande uint64
+	for i := 0; i<=peticiones; i++ {
+		var numero int
+		fmt.Println("Ingresá un número: ")
+		fmt.Scan(&numero)
+		if numero>int(numeroMasGrande){
+			numeroMasGrande = uint64(numero)
+		}
+	}
+	fmt.Println("El número mas grande es",numeroMasGrande)
+}
 /*3. REalziar las operaciones básicas con números de tipo entero y números de tpo flotante*/
 /*4. En un teatro cada cliente paga $10000 por entrada y cada función le cuesta al teatro $300000 por atención prestada.
 Por cada cliente que entre al teatro debe pagar un costo de 2000 por aseo. Desarrolar un programa que reciba

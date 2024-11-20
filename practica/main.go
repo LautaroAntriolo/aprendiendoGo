@@ -14,4 +14,5 @@ func main(){
 	//datos.Lecturas("/home/lautaro/Documentos/learningGo/practica/empleados_actualizados.csv")
 
 	ejemplosM1.Volumenes("cono",4)
+	ejemplosM1.NumeroMaGrande(4)
 }
