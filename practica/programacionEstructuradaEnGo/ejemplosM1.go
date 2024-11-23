@@ -51,6 +51,50 @@ func NumeroMaGrande(peticiones int){
 	fmt.Println("El número mas grande es",numeroMasGrande)
 }
 /*3. REalziar las operaciones básicas con números de tipo entero y números de tpo flotante*/
+func Calculadora() {
+    var resultado, numero int
+    var operacion string
+    continuar := "s"
+    
+    fmt.Print("Ingresá el primer número: ")
+    fmt.Scan(&resultado)
+    
+    for continuar == "s" {
+        fmt.Print("Ingresá la operación (+, -, *, /): ")
+        fmt.Scan(&operacion)
+        
+        fmt.Print("Ingresá el siguiente número: ")
+        fmt.Scan(&numero)
+        
+        // Realizar la operación
+        switch operacion {
+        case "+":
+            resultado += numero
+        case "-":
+            resultado -= numero
+        case "*":
+            resultado *= numero
+        case "/":
+            if numero != 0 {
+                resultado /= numero
+            } else {
+                fmt.Println("Error: No se puede dividir por cero")
+                continue
+            }
+        default:
+            fmt.Println("Operación no válida")
+            continue
+        }
+        
+        fmt.Printf("Resultado actual: %d\n", resultado)
+        
+        fmt.Print("¿Querés continuar? s/n: ")
+        fmt.Scan(&continuar)
+        continuar = strings.ToLower(continuar)
+    }
+    
+    fmt.Printf("Resultado final: %d\n", resultado)
+}
 /*4. En un teatro cada cliente paga $10000 por entrada y cada función le cuesta al teatro $300000 por atención prestada.
 Por cada cliente que entre al teatro debe pagar un costo de 2000 por aseo. Desarrolar un programa que reciba
 el numero de clientes de una función y devuelva el valor de las fanancias obtenidas*/
