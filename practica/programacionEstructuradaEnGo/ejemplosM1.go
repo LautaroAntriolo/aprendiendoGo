@@ -52,7 +52,7 @@ func NumeroMaGrande(peticiones int){
 }
 /*3. REalziar las operaciones básicas con números de tipo entero y números de tpo flotante*/
 func Calculadora() {
-    var resultado, numero int
+    var resultado, numero float64
     var operacion string
     continuar := "s"
     
@@ -86,14 +86,14 @@ func Calculadora() {
             continue
         }
         
-        fmt.Printf("Resultado actual: %d\n", resultado)
+        fmt.Printf("Resultado actual: %.2f\n", resultado)
         
-        fmt.Print("¿Querés continuar? s/n: ")
+        fmt.Print("Querés continuar? s/n: ")
         fmt.Scan(&continuar)
         continuar = strings.ToLower(continuar)
     }
     
-    fmt.Printf("Resultado final: %d\n", resultado)
+    fmt.Printf("Resultado final: %.2f\n", resultado)
 }
 /*4. En un teatro cada cliente paga $10000 por entrada y cada función le cuesta al teatro $300000 por atención prestada.
 Por cada cliente que entre al teatro debe pagar un costo de 2000 por aseo. Desarrolar un programa que reciba
