@@ -13,6 +13,10 @@ func main(){
 	//fechas.Recordatorio(2024,11,17,20,58,"A ver si esto funciona!")
 	//datos.Lecturas("/home/lautaro/Documentos/learningGo/practica/empleados_actualizados.csv")
 
-	ejemplosM1.Volumenes("cono",4)
-	ejemplosM1.NumeroMaGrande(4)
+	// ejemplosM1.Volumenes("cono",4)
+	// ejemplosM1.NumeroMaGrande(4)
+	// ejemplosM1.Calculadora()
+	ejemplosM1.Teatro(15)
+	ejemplosM1.Descuento(1500,"Carnes")
+	ejemplosM1.CalcularTotales()
 }

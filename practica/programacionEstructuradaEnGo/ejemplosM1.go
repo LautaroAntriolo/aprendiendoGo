@@ -97,16 +97,99 @@ func Calculadora() {
 }
 /*4. En un teatro cada cliente paga $10000 por entrada y cada función le cuesta al teatro $300000 por atención prestada.
 Por cada cliente que entre al teatro debe pagar un costo de 2000 por aseo. Desarrolar un programa que reciba
-el numero de clientes de una función y devuelva el valor de las fanancias obtenidas*/
+el numero de clientes de una función y devuelva el valor de las ganancias obtenidas*/
+
+func Teatro(clientes int){
+    
+    const valorTeatro = 300000
+    
+    var aseo int = 2000
+
+    var gananciaParcial float32 = float32(clientes) * float32(10000 - aseo)
+
+    var gananciaTotal float32 = valorTeatro - gananciaParcial
+
+    fmt.Printf("Las ganancias totales son: %.2f\n", gananciaTotal)
+
+}
+
 /*5.En un supermercada se ofrecen descuentos por el total del valor en cada uno de los sigueintes productos: 
 carnes: 10%
 frutas: 5%
 aseo: 7%
 dulces: 9%
 */
-/*6. Una persona desea llevar 10550 en dulces, 50000 en carne y 35000 en productos de aseo. Se necesita calcular el descuento
-titak oir cada tuoi de producto, posteriormente entregar el valor total a pagar con descuento y sin descuento*/
 
+func Descuento(precio float32, producto string) float32{
+    var resultado float32
+    switch strings.ToUpper(producto) {
+    case "CARNES":
+        resultado = precio*0.9
+    case "FRUTAS":
+        resultado = precio*0.95
+    case "ASEO":
+        resultado = precio*0.93
+    case "DULCES":
+        resultado = precio*0.91
+    }
+    fmt.Printf("El resultado es: %.2f\n", resultado)
+    return resultado
+}
+
+/*6.Una persona desea llevar $10.550 en dulces, $50.000 en carne y $35.000 en
+productos de aseo. Se necesita calcular el descuento total por cada tipo de producto,
+posteriormente entregar el valor total a pagar con descuento y sin descuento.*/
+
+
+func CalcularTotales() {
+	productos := make(map[string]float32)
+
+	fmt.Println("Ingrese los productos y sus precios. Escriba 'FIN' para terminar.")
+	for {
+		var producto string
+		var precio float32
+
+		fmt.Print("Producto: ")
+		fmt.Scanln(&producto)
+
+		if strings.ToUpper(producto) == "FIN" {
+			break
+		}
+
+		fmt.Print("Precio: ")
+		_, err := fmt.Scanln(&precio)
+		if err != nil || precio < 0 {
+			fmt.Println("Precio inválido. Intente de nuevo.")
+			continue
+		}
+
+		productos[producto] = precio
+	}
+
+	var descuentoTotal, totalSinDescuento, totalConDescuento float32
+
+	fmt.Println("\nCálculo de descuentos y totales:")
+	for producto, precio := range productos {
+
+		descuento := Descuento(precio, producto)
+		precioConDescuento := precio - descuento
+
+		descuentoTotal += descuento
+		totalSinDescuento += precio
+		totalConDescuento += precioConDescuento
+
+		// detalle de cada producto
+		fmt.Printf("%s:\n", strings.ToUpper(producto))
+		fmt.Printf("  Precio original: $%.2f\n", precio)
+		fmt.Printf("  Descuento aplicado: $%.2f\n", descuento)
+		fmt.Printf("  Precio con descuento: $%.2f\n\n", precioConDescuento)
+	}
+
+	fmt.Println("Resultado:")
+	fmt.Printf("  Total sin descuento: $%.2f\n", totalSinDescuento)
+	fmt.Printf("  Total descuentos: $%.2f\n", descuentoTotal)
+	fmt.Printf("  Total con descuento: $%.2f\n", totalConDescuento)
+}
 /*7 Verificar si dos números ingresados son iguales*/
 /*8 VErificar si un número es menor a 10*/
 /*9 Hacer un programa que determine verdadero o falso si un número es mayor o igual que 10 y menor que 20
