@@ -3,7 +3,8 @@ package main
 import (
 	//"practica/fechas"
 	//"practica/lecturas"
-	"practica/programacionEstructuradaEnGo"
+	"practica/programacionEstructuradaEnGo/ejemplosM1"
+	"practica/programacionEstructuradaEnGo/ejemplosM2"
 	"fmt"
 )
 
@@ -23,4 +24,9 @@ func main(){
 	ejemplosM1.DescomponerNumero(987)
 	ejemplosM1.DescomponerEInvertir(987)
 	fmt.Println("")
+	ejemplosM2.MayoNumero(1,2,3,4,5)
+	fmt.Print(ejemplosM2.AnioBisiesto(1992)) // true 
+	fmt.Print(ejemplosM2.AnioBisiesto(2000)) // true
+	fmt.Print(ejemplosM2.AnioBisiesto(1900)) // false
+	
 }
