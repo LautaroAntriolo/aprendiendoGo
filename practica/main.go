@@ -4,6 +4,7 @@ import (
 	//"practica/fechas"
 	//"practica/lecturas"
 	"practica/programacionEstructuradaEnGo"
+	"fmt"
 )
 
 func main(){
@@ -16,7 +17,10 @@ func main(){
 	// ejemplosM1.Volumenes("cono",4)
 	// ejemplosM1.NumeroMaGrande(4)
 	// ejemplosM1.Calculadora()
-	ejemplosM1.Teatro(15)
-	ejemplosM1.Descuento(1500,"Carnes")
-	ejemplosM1.CalcularTotales()
+	// ejemplosM1.Teatro(15)
+	// ejemplosM1.Descuento(1500,"Carnes")
+	// ejemplosM1.CalcularTotales()
+	ejemplosM1.DescomponerNumero(987)
+	ejemplosM1.DescomponerEInvertir(987)
+	fmt.Println("")
 }

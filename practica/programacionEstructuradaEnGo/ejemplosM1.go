@@ -191,9 +191,59 @@ func CalcularTotales() {
 	fmt.Printf("  Total con descuento: $%.2f\n", totalConDescuento)
 }
 /*7 Verificar si dos números ingresados son iguales*/
+func IgualdadDeDosNumeros(numero1 float32, numero2 float32) bool {
+	primero := float64(numero1) 
+	segundo := float64(numero2) 
+	var estado bool = false
+	if primero == segundo{
+		estado = true
+	}
+
+	return estado
+}
 /*8 VErificar si un número es menor a 10*/
+func NumeroMenorA(numero float32, tope int) bool {
+	var estado bool = false
+	if numero < float32(tope){
+		estado = true
+	}else if numero == float32(tope){
+		fmt.Print("los números son iguales. Volvé a ingresarlos")
+	}
+	
+	return estado
+}
 /*9 Hacer un programa que determine verdadero o falso si un número es mayor o igual que 10 y menor que 20
 o mayor que 30*/
+func RangoDeNumeros(numero int) bool {
+	var estado bool = false
+	if numero >= 10 && numero < 20 {
+		estado = true
+	}else if numero > 30{
+		estado = true
+	}
+	return estado
+}
 /*10 Dado un número de 3 cifras, descomponerlo en sus unidades fundamentales y decir la cantidad
 correspondiente. Ejemplo: el número 631 tiene una unidad, 3 decenas y 6 centesimas*/
+func DescomponerNumero(numero int16){
+	centenas := numero/100
+	decenas := (numero / 10) % 10
+	unidades := numero % 10
+
+	fmt.Printf("Número: %d\n", numero)
+	fmt.Printf("Centenas: %d\n", centenas)
+	fmt.Printf("Decenas: %d\n", decenas)
+	fmt.Printf("Unidades: %d\n", unidades)
+}
 /*11 Del ejercicio anterior, descomponer un número dado e invertirlo. Por ejemplo: 582 pasaría a ser 285*/
+
+func DescomponerEInvertir(numero int16) int16 {
+	centenas := numero/100
+	decenas := (numero / 10) % 10
+	unidades := numero % 10
+	
+	invertido := (unidades * 100) + (decenas * 10) + centenas
+
+	fmt.Printf("Número original: %d, Número invertido: %d\n", numero, invertido)
+	return invertido
+}
