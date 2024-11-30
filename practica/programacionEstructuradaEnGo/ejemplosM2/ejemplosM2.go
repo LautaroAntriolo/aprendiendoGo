@@ -5,6 +5,7 @@ import (
 	"math"
 	"sort"
 	"strconv"
+	"errors"
 )
 
 /*1.Del capítulo “2. Estructuras de un programa en GO”, desarrollar los ejercicios
@@ -287,10 +288,71 @@ func Estadisticas(lista []int) (float32, float32, float32){
 
 /*11.Construir una función que, dadas dos matrices, calcule la suma y
 multiplicación de sus elementos. (Tener en cuenta propiedades de las matrices)*/
+func SumarMatrices(a, b [][]int) ([][]int, error) {
+	if len(a) != len(b) || len(a[0]) != len(b[0]) {
+		return nil, errors.New("las matrices deben tener las mismas dimensiones para sumarse")
+	}
+
+	filas, columnas := len(a), len(a[0])
+	resultado := make([][]int, filas)
+	for i := range resultado {
+		resultado[i] = make([]int, columnas)
+	}
+
+	for i := 0; i < filas; i++ {
+		for j := 0; j < columnas; j++ {
+			resultado[i][j] = a[i][j] + b[i][j]
+		}
+	}
+	return resultado, nil
+}
+
+func MultiplicarMatrices(a, b [][]int) ([][]int, error) {
+	if len(a[0]) != len(b) {
+		return nil, errors.New("el número de columnas de la primera matriz debe ser igual al número de filas de la segunda")
+	}
+
+	filasA, columnasA := len(a), len(a[0])
+	columnasB := len(b[0])
+	resultado := make([][]int, filasA)
+	for i := range resultado {
+		resultado[i] = make([]int, columnasB)
+	}
+
+	for i := 0; i < filasA; i++ {
+		for j := 0; j < columnasB; j++ {
+			for k := 0; k < columnasA; k++ {
+				resultado[i][j] += a[i][k] * b[k][j]
+			}
+		}
+	}
+
+	return resultado, nil
+}
 
 
 /*12.Construir una función en donde dada una matriz, calcule su matriz
-transformada. (Tener en cuenta propiedades de las matrices)*/
+transformada => transpuesta. (Tener en cuenta propiedades de las matrices)*/
+
+func MatrizTranspuesta(matriz [][]int) [][]int {
+
+    if len(matriz) == 0 {
+        return [][]int{}
+    }
+
+    filas := len(matriz)
+    columnas := len(matriz[0])
+    transpuesta := make([][]int, columnas)
+
+    for i := 0; i < columnas; i++ {
+        transpuesta[i] = make([]int, filas)
+        for j := 0; j < filas; j++ {
+            transpuesta[i][j] = matriz[j][i]
+        }
+    }
+
+    return transpuesta
+}
 
 /*13.Construir un programa que pueda recrear el juego Tic-tac-toe.Serán dos
 jugadores posibles y gana quien alcance a completar 3 casillas en línea o diagonal,

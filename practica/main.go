@@ -41,5 +41,20 @@ func main(){
 	fmt.Println("El vector de numeros pares quedó: %v ", vectorPares)
 	fmt.Println("El vector de numeros impares quedó: %v ", vectorImpares)
 
-	ejemplosM2.Estadisticas(vector2)
+	// ejemplosM2.Estadisticas(vector2)
+
+	matriz1 := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{14, 52, 16},
+	}
+	// matriz2 := [][]int{
+	// 	{7, 8, 9},
+	// 	{10, 11, 12},
+	// 	{10, 11, 12},
+	// }
+
+	// fmt.Println(ejemplosM2.MultiplicarMatrices(matriz1,matriz2))
+	// fmt.Println(ejemplosM2.SumarMatrices(matriz1,matriz2))
+	ejemplosM2.MatrizTranspuesta(matriz1)
 }
