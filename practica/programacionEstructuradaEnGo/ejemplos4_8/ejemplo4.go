@@ -3,7 +3,7 @@
 formato de horas, minutos y segundos, iniciando desde las 00:00:00 horas hasta las
 23:59:59 horas
 */
-package ejemplosm3
+package ejemplosm4_8
 
 import "fmt"
 

@@ -5,7 +5,7 @@ import (
 	//"practica/lecturas"
 	// "practica/programacionEstructuradaEnGo/ejemplosM1"
 	// "practica/programacionEstructuradaEnGo/ejemplosM2"
-	"practica/programacionEstructuradaEnGo/ejemplosM3"
+	"practica/programacionEstructuradaEnGo/ejemplos4_8"
 	"fmt"
 )
 
@@ -59,8 +59,10 @@ func main(){
 	// fmt.Println(ejemplosM2.SumarMatrices(matriz1,matriz2))
 	// ejemplosM2.MatrizTranspuesta(matriz1)
 
-	// ejemplosm3.Sumatoria(1,2,3,4,5,6,7,8,9)
-	// ejemplosm3.ParesEntreDosNumeros(0,10)
-	// ejemplosm3.NumeroPrimo(5)
-	ejemplosm3.RelojDigital()
+	// ejemplosm4_8.Sumatoria(1,2,3,4,5,6,7,8,9)
+	// ejemplosm4_8.ParesEntreDosNumeros(0,10)
+	// ejemplosm4_8.NumeroPrimo(5)
+	// ejemplosm4_8.RelojDigital()
+	// ejemplosm4_8.TablaDel(8)
+	ejemplosm4_8.NumerosPerfectos(3)
 }
