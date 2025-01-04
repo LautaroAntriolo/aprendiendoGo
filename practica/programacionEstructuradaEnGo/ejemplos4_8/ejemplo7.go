@@ -22,13 +22,25 @@ package ejemplosm4_8
 import "fmt"
 func GranosDeTrigo(){
 	var contador int = 0
-	var estadoUno int = 0
-	var estadoDos int = 0
-	for  contador<6{
-		estadoUno++
-		fmt.Print(estadoUno)
-		estadoDos++
-		estadoUno+=estadoDos
-		contador++
+	var contador2 int = 0
+	var estadoUno int = 1
+	for contador2<7{
+		for contador<6{
+			if estadoUno<=1{
+				fmt.Print(estadoUno)
+				fmt.Print(" ")
+				estadoUno = estadoUno*2
+				contador++
+			}else{
+				fmt.Print(estadoUno)
+				fmt.Print(" ")
+				estadoUno = estadoUno*2
+				contador++
+			}
+		}
+		contador = 0
+		contador2++
+		fmt.Println("")
 	}
+	
 }
