@@ -5,7 +5,8 @@ import (
 	//"practica/lecturas"
 	// "practica/programacionEstructuradaEnGo/ejemplosM1"
 	// "practica/programacionEstructuradaEnGo/ejemplosM2"
-	"practica/programacionEstructuradaEnGo/ejemplos4_8"
+	// "practica/programacionEstructuradaEnGo/ejemplos4_8"
+	"practica/programacionEstructuradaEnGo/ejemplos5_1"
 	"fmt"
 )
 
@@ -65,6 +66,7 @@ func main(){
 	// ejemplosm4_8.RelojDigital()
 	// ejemplosm4_8.TablaDel(8)
 	// ejemplosm4_8.NumerosPerfectos(3)
-	ejemplosm4_8.GranosDeTrigo()
+	// ejemplosm4_8.GranosDeTrigo()
+	ejemplos5_1.Main()
 	
 }
