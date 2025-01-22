@@ -67,6 +67,9 @@ func main(){
 	// ejemplosm4_8.TablaDel(8)
 	// ejemplosm4_8.NumerosPerfectos(3)
 	// ejemplosm4_8.GranosDeTrigo()
-	ejemplos5_1.Main()
+	// ejemplos5_1.Main()
+	// ejemplos5_1.Celulares()	
+	// ejemplos5_1.Familia()
+	ejemplos5_1.FinDeAnio()	
 	
 }
